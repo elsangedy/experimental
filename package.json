@@ -1,0 +1,20 @@
+{
+  "name": "experimental",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "auth": "yarn workspace @experimental/auth",
+    "store": "yarn workspace @experimental/store",
+    "header": "yarn workspace @experimental/header",
+    "dev": "wsrun -a dev",
+    "build": "wsrun -a build"
+  },
+  "devDependencies": {
+    "wsrun": "^5.2.1"
+  }
+}
