@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil'
 
 const currentUser = atom({
   key: 'currentUser',
-  default: 'Current User Name'
+  default: ''
 })
 
 const isAuthenticated = selector({

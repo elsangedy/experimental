@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
 import atoms from './atoms'
 
-const Login = () => {
+const Profile = React.memo(() => {
   const [currentUser, setCurrentUser] = useRecoilState(atoms.currentUser)
   const [newName, setNewName] = React.useState('')
 
@@ -22,6 +22,28 @@ const Login = () => {
       </div>
     </div>
   )
+})
+
+const LoginForm = React.memo(() => {
+  const setCurrentUser = useSetRecoilState(atoms.currentUser)
+
+  return (
+    <div>
+      <h1>LOGIN</h1>
+
+      <button onClick={() => setCurrentUser('Current User')}>login</button>
+    </div>
+  )
+})
+
+const Login = () => {
+  const isAuthenticated = useRecoilValue(atoms.isAuthenticated)
+
+  if (isAuthenticated) {
+    return <Profile />
+  }
+
+  return <LoginForm />
 }
 
 export default Login
